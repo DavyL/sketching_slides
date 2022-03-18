@@ -48,11 +48,26 @@
 	\begin{block}{CS inspired idea}
 		Use a Gaussian random matrix in $\mathbb{R}^{m\times N}$ and define the sketch as $\tilde z = A\hat{p}$ and solve
 		\begin{equation*}
-			\tilde p = argmin_{p\in\Sigma_k^+}||\tilde z - Ap||^2\quad (+\lambda||p||_1)
+			\tilde p = argmin_{p\in\Sigma_k^+}||\tilde z - Ap||^2 
 		\end{equation*}
-
 	\end{block}
+\end{frame}
 
-
+\begin{frame}{Sketching estimates the underlying data-distribution}
+	We can do $k$-means clustering with $m$ measures using:
+		\begin{itemize}
+			\item $m\geq k\log N$ for Gaussian sampling
+			\item $m \geq k\log(k)^3\log N$ for DFT of $\hat{p}$
+		\end{itemize}
+	What if we consider the \emph{continuous} Fourier Tranform (FT) ?
+	\newline
+	We only know the empirical distribution $\bar p_\mathcal{X} = \frac{1}{N}\sum_{i=1}^N \delta(x_i - x)$, so
+	\begin{align*}
+		FT(\bar p)(\omega) &= \int_{\mathbb{R}^d} \bar p_\mathcal{X}(x) e^{-i2\pi\langle w, x\rangle}dx = \frac{1}{N}\sum_{i=1}^N e^{-i2\pi\langle w,x\rangle} =: \bar \Psi_{\bar p_\mathcal{X}}(\omega) \\
+				&\longrightarrow^{\mathbb{E}} \bar \Psi_{p^*}(\omega) \quad\text{The "true" characteristic function at $\omega$}.
+	\end{align*}
+	\begin{block}{CS inspired idea}
+		If the true distribution $p^*$ is "simple", then interpolating the characteristic function, using simple models, on "few" of its samples should give the true distribution.
+	\end{block}
 \end{frame}
 
