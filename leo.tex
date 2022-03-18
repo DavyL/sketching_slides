@@ -25,3 +25,34 @@
 	\end{block}
 
 \end{frame}
+
+\begin{frame}{$k$-means centroids}
+	\begin{block}{The problem}
+		The goal is to recover $k$ centroids $\{c_l\}_{l=1}^k$ from some data $\{x_i\}_{i=1}^N$ that minimize
+		\begin{equation*}
+			\sum_{i=1}^N \min_l ||x_i - c_l||^2.
+		\end{equation*}
+	\end{block}
+	For $N>>1$ traditional algorithms are not very efficient because they take the whole dataset at once...
+	\newline
+	\emph{But}, $N>>1$ allows to use the laws of large numbers and concentration. It is reasonable to consider that the data will accumulate on small portions of the space.
+
+\end{frame}
+
+\begin{frame}
+	\begin{block}{The binning map}
+		Assume the centroids are spaced by at least $\varepsilon$ and have a norm smaller than $r$, then cover $[-r,r]^d$ by, $N=(\frac{2r}{\varepsilon})^d$, $d$-dimensional cubes (\emph{bins}). For each bin, count the average number of points that belong to it. This defines the binning map $\hat{p}\in\mathbb{R}^N_+$.
+	\end{block}
+	This gives us a sketch of the data, but in a large dimensional space.\newline
+	\emph{But}, if the model that generated the data is "structured", i.e., the data concentrates in a few centroids, then the problem is a \emph{sparse} problem.
+	\begin{block}{CS inspired idea}
+		Use a Gaussian random matrix in $\mathbb{R}^{m\times N}$ and define the sketch as $\tilde z = A\hat{p}$ and solve
+		\begin{equation*}
+			\tilde p = argmin_{p\in\Sigma_k^+}||\tilde z - Ap||^2\quad (+\lambda||p||_1)
+		\end{equation*}
+
+	\end{block}
+
+
+\end{frame}
+
