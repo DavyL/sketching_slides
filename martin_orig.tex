@@ -1,0 +1,73 @@
+
+
+\begin{frame}{Task driven distances}
+\begin{block}{Task driven distance}
+Given a loss function $L$ and probability distributions $p_X$ and $p_X^'$, we consider the distance 
+\begin{equation*}
+    \rho(p_X,p_{X}^{'} )=\sup_{\theta}|R^*(\theta|p_X)-R^*(\theta|p_{X}^{'})|  
+\end{equation*}
+where $R^*(\theta|p_X)=E_{X\sim p_X}(L(\theta)|X)$ is the expected risk under $p_X$.
+\end{block}
+\begin{itemize}
+    \item The loss function $L$ is task specific
+    \item Excess risk bounds $0\leq R^*(\theta^{*'}|p_X)-R^*(\theta^{*}|p_X)\leq 2\rho(p_X,p_{X}^{'}) $ where $\theta^*=argmin_{\theta} R^*(\theta|p_X)$ and $\theta^{*'}=argmin_{\theta} R^*(\theta|p_{X}^{'})$
+    \item When $\hat{p}_X$ is the empirical distribution on the data, and $p_X$ is the true distribution, under certian conditions $\rho(\hat{p}_X,p_X)=O(\frac{1}{\sqrt{n}})$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{LRIP and Excess risk control}
+In the compressive learning framework we are interested in an upper bound of the excess risk which is controlled by the task driven distance.
+\begin{block}{
+The Lower Restricted Isometry Property (LRIP) } The operator $\mathcal{A}$ is said to have the LRIP with constant $C_0$ and with respect to a parametric subfamily $\Sigma_{\theta}=\{p_{\theta}|\theta\in\Theta\}$ if
+\begin{equation*}
+    \rho(p_{\theta},p_{\theta^{'}})\leq C_0 ||\mathcal{A}(p_{\theta})-\mathcal{A}(p_{\theta^{'}})||
+\end{equation*}
+for all $p_{\theta},p_{\theta^{'}}\in\Sigma_{\theta}$
+\end{block}
+
+Excess risk bound under LRIP: for all $\theta^{'}\in\Sigma_{\theta}$ 
+    \begin{equation*}
+    \begin{split}
+        &R^*(\tilde{\theta}|p_X)-R^*(\theta^{'}|p_X)\leq 4C_0||\mathcal{A}(p_X)-\tilde{z}||\\
+        &+4C_0||\mathcal{A}(p_{\theta^{'}})-\mathcal{A}(p_X)||+2\rho(p_{\theta^{'}},p_X)
+    \end{split}
+    \end{equation*}
+
+\begin{itemize}
+    \item Choosing $\theta^{'}=\theta^*$, this result is interpretable in terms of modeling and sampling error
+\end{itemize}
+
+    
+
+\end{frame}
+
+\begin{frame}{Expected and mean kernel, MMD}
+\begin{itemize}
+    \item Two sources of randomness: the data and the random features used for the sketch
+    \item For the random feature map we have $<\frac{1}{m}\Phi(x),\frac{1}{m}\Phi(x^{'})>=\frac{1}{m}\sum_{j=1}^m e^{-j2\pi w_j(x-x^{'})}$
+    \item Averaging over the random features gives the \emph{expected kernel} $k(x,x^{'})=E_w(\exp(-j2\pi<w,x-x^{'}>))$
+    \item We define the \emph{mean kernel} as
+    $k(p,q)=E_{x\sim p, x^{'}\sim q} k(x,x^{'})$
+    \item A quantity of interest is the \texit{maximum mean discrepancy}  $MMD(p,q)=\sqrt{k(p,p)-2k(p,q)+k(q,q)}$
+    \item It can be shown using concentration of measure that
+     $\frac{1}{\sqrt{2}}MMD(p_{\theta},p_{\theta^{'}})\leq \frac{1}{\sqrt{m}}||\mathcal{A}(p_{\theta})-\mathcal{A}(p_{\theta^{'}})||$ when $\Sigma_{\theta}$ is a finite set
+     \item When $\Sigma_{\theta}$ is infinite additional assumptions are required to ensure that the LRIP property hodls
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Compressed clustering, fast sketching}
+\begin{itemize}
+    \item In practice computing the sketch using random Fourier samples might be problematic due to the difficulty in implementing accurately the complex valued function $x\rightarrow\exp(-j2\pi x)$
+    \item Using the Fast Walsh-Hadamard transform it is possible to speed up the sketching process
+    \item For blocks of $2^q$ by $2^q$ matrices, we make layers of alternatively sampling Radamacher diagonal layer matrices
+    followed by Hadamard matrices of dimension $2^q$ by $2^q$
+    \item In general, we fit several blocks of this construction vertically and paddle with zeroes until we get proper dimension for $W$
+\end{itemize}
+
+\end{frame}
+
+
+
+
