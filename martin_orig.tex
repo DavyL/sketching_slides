@@ -45,7 +45,7 @@ Excess risk bound under LRIP: for all $\theta^{'}\in\Sigma_{\theta}$
 \begin{frame}{Expected and mean kernel, MMD}
 \begin{itemize}
     \item Two sources of randomness: the data and the random features used for the sketch
-    \item For the random feature map we have $<\frac{1}{m}\Phi(x),\frac{1}{m}\Phi(x^{'})>=\frac{1}{m}\sum_{j=1}^m e^{-j2\pi w_j(x-x^{'})}$
+    \item For the random feature map we have $<\frac{1}{m}\Phi(x),\frac{1}{m}\Phi(x^{'})>=\frac{1}{m}\sum_{j=1}^m e^{-j2\pi \langle w_j,x-x^{'} \rangle}$
     \item Averaging over the random features gives the \emph{expected kernel} $k(x,x^{'})=E_w(\exp(-j2\pi<w,x-x^{'}>))$
     \item We define the \emph{mean kernel} as
     $k(p,q)=E_{x\sim p, x^{'}\sim q} k(x,x^{'})$
@@ -63,7 +63,7 @@ Excess risk bound under LRIP: for all $\theta^{'}\in\Sigma_{\theta}$
     \item Using the Fast Walsh-Hadamard transform it is possible to speed up the sketching process
     \item For blocks of $2^q$ by $2^q$ matrices, we make layers of alternatively sampling Radamacher diagonal layer matrices
     followed by Hadamard matrices of dimension $2^q$ by $2^q$
-    \item In general, we fit several blocks of this construction vertically and paddle with zeroes until we get proper dimension for $W$
+    \item In general, we fit several blocks of this construction vertically and padding with zeroes until we get proper dimension for $W$
 \end{itemize}
 
 \end{frame}
