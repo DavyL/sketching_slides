@@ -1,32 +1,30 @@
 
 \begin{frame}
-	\frametitle{Parallel with signal processing}
+		\frametitle{Parallel with signal processing}
+		
+		\begin{itemize}
+			\item Recall that in signal processing our goal is to reconstruct a vector $x \in \mathbb{R}^{d}$ from $y = Ax + \epsilon$
+			\item At first glance compressive learning setup is rather different as we deal with a large collection of vectors, rather than just one
+			\item The analogy becomes clearer if we assume (as it is often the case in ML) that our vectors {$\{\boldsymbol{x}_{i}\}_{i = 1}^{n}$} are modeled as i.i.d. random vectors having a probability measure $\mathbb{P}$
+			
+			\item In this case we get
+			$$
+			\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^{n} \boldsymbol{\Phi}\left(\boldsymbol{x}_{i}\right) \stackrel{a.s.}{=} \mathbb{E_{\mathbb{P}}}[\boldsymbol{\Phi}(X)] = \mathbb{A}(\mathbb{P}),
+			$$
+			where $\mathbb{A}$ is a linear operator matching a probability measure to the expectation over this measure of the feature map $\boldsymbol{\Phi}$
+		\end{itemize}
+	\end{frame}
 	
-	\begin{itemize}
-	 	\item Recall that in signal processing our goal is to reconstruct a vector $x \in \mathbb{R}^{d}$ from $y = Ax + \epsilon$, where y is its linear projection on a smaller subspace perturbed by an error
-	 	\item At first glance compressive learning setup is rather different as we deal with a large collection of vectors, rather than just one
-	 	\item The analogy becomes clearer if we assume (as it is often the case in ML) that our vectors {$\{\boldsymbol{x}_{i}\}_{i = 1}^{n}$} are modeled as i.i.d. random vectors having a probability measure $\mathbb{P}$
-	 	
-	 	\item In this case we get
-		$$
-				\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^{n} \boldsymbol{\Phi}\left(\boldsymbol{x}_{i}\right) \stackrel{a.s.}{=} \mathbb{E_{\mathbb{P}}}[\boldsymbol{\Phi}(X)] = \mathbb{A}(\mathbb{P}),
-		$$
-		where $\mathbb{A}$ is a linear operator matching a probability measure to the expectation over this measure of the feature map $\boldsymbol{\Phi}$
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Parallel with signal processing}
-	\begin{itemize}
-		\item In this manner we can write
-		$$
-		\tilde{z} =  \frac{1}{n} \sum_{i=1}^{n} \boldsymbol{\Phi}(\boldsymbol{x}_{i}) \approx \mathbb{A}(\mathbb{P}) = \mathbb{A}(\mathbb{P}) + \epsilon
-		$$
-		\item Thus instead of considering a linear projection of a vector measured with noise as we did in signal processing, in compressive learning we consider a linear projection of the underlying probability measured with noise.
-		
-		\item If we take $\boldsymbol{\Phi} = x^{k}$ we get that $\mathbb{E_{\mathbb{P}}}[\boldsymbol{\Phi}(X)]$ is just the (uncentered) kth moment. In general, for any $\boldsymbol{\Phi}$ the quantity $\mathbb{E_{\mathbb{P}}}[\boldsymbol{\Phi}(X)]$ is called generalised moment.
-		
-		\item In signal processing the linear measurement matrix A can be chosen at random to ensure good reconstruction properties with high probability. By analogy, in compressive sensing $\boldsymbol{\Phi}$ is also often randomised
-	\end{itemize}
-\end{frame}
+	\begin{frame}
+		\frametitle{Parallel with signal processing}
+		\begin{itemize}
+			\item In this manner we can write
+			$$
+			\tilde{z} =  \frac{1}{n} \sum_{i=1}^{n} \boldsymbol{\Phi}(\boldsymbol{x}_{i}) \approx \mathbb{A}(\mathbb{P}) = \mathbb{A}(\mathbb{P}) + \epsilon
+			$$
+			\item Thus instead of considering a linear projection of a vector measured with noise ($x \rightarrow Ax + \epsilon$), in compressive learning we consider a linear projection of the underlying probability measured with noise: $\mathbb{P} \rightarrow \mathbb{A}(\mathbb{P}) + \epsilon$
+			
+			\item In signal processing the linear measurement matrix A can be chosen at random to ensure good reconstruction properties with high probability. By analogy, in compressive sensing $\boldsymbol{\Phi}$ is also often randomised
+		\end{itemize}
+	\end{frame}
 

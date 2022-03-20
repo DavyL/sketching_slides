@@ -1,5 +1,3 @@
-
-	
 	\begin{frame}
 		\frametitle{Motivation and principles of compressive learning}
 		
@@ -19,7 +17,7 @@
 	\begin{frame}
 		\frametitle{Motivation and principles of compressive learning}
 		
-			\begin{table}
+		\begin{table}
 			\begin{tabular}{c | c | c | c }
 				$x_{1}$ & $x_{2}$ & \ldots & $x_{n}$ \\
 				\hline \hline
@@ -30,7 +28,7 @@
 			\end{tabular}
 			\caption{Initial dataset}
 		\end{table}
-		
+		\resizebox{\textwidth}{!}{%
 		\begin{tikzpicture}
 			\draw[<->] (0,2.5) -- (2.4,2.5) node[midway, above] {large n};
 			\draw[<->] (-0.18, 2) -- (-0.18, 0) node[midway, left] {d};
@@ -49,8 +47,10 @@
 			\draw[->] (6.8,1) -- (9,1) node[midway, above] {average};
 			
 			\draw[black] (9, 0) rectangle (9.7, 3) node [pos = .5]{$\tilde{z}$};
-			\draw[<->] (10, 0) -- (10, 3) node[midway, right] {$m << nd$};
+			\draw[<->] (9.88, 0) -- (9.88, 3) node[midway, right] {\footnotesize$m << nd$};
 			
 		\end{tikzpicture}
+	}
 	\end{frame}
+	
 	

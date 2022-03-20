@@ -36,7 +36,7 @@
 	\newline
 	We only know the empirical distribution $\bar p_\mathcal{X} = \frac{1}{N}\sum_{i=1}^N \delta(x_i - x)$, so
 	\begin{align*}
-		FT(\bar p)(\omega) &= \int_{\mathbb{R}^d} \bar p_\mathcal{X}(x) e^{-i2\pi\langle w, x\rangle}dx = \frac{1}{N}\sum_{i=1}^N e^{-i2\pi\langle w,x\rangle} =: \bar \Psi_{\bar p_\mathcal{X}}(\omega) \\
+		FT(\bar p)(\omega) &= \int_{\mathbb{R}^d} \bar p_\mathcal{X}(x) e^{-i2\pi\langle w, x\rangle}dx = \frac{1}{N}\sum_{i=1}^N e^{-i2\pi\langle w,x_i\rangle} =: \bar \Psi_{\bar p_\mathcal{X}}(\omega) \\
 				&\longrightarrow^{\mathbb{E}} \bar \Psi_{p^*}(\omega) \quad\text{The "true" characteristic function at $\omega$}.
 	\end{align*}
 	\begin{block}{CS inspired idea}

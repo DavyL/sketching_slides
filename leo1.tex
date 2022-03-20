@@ -1,10 +1,15 @@
 \begin{frame}{Principal Component Analysis (PCA)}
-	\begin{block}{PCA}
-		The goal is to find the linear subspace $P_k$ that best fits the $d$-dimensional data $\{x_i\}_{i=1}^N$ in the LS sense, i.e., find an orthogonal family of $k$ vectors $\{u_l\}_{l=1}^k$ that maximizes
-		\begin{equation*}
-				\sum_{l=1}^k\sum_{i=1}^N |u_l^Tx_i|^2.
-		\end{equation*}
-	\end{block}
+	\begin{minipage}{0.59\textwidth}
+		\begin{block}{PCA}
+			The goal is to find the linear subspace $P_k$ that best fits the $d$-dimensional data $\{x_i\}_{i=1}^N$ in the LS sense, i.e., find an orthogonal family of $k$ vectors $\{u_l\}_{l=1}^k$ that maximizes
+			\begin{equation*}
+					\sum_{l=1}^k\sum_{i=1}^N |u_l^Tx_i|^2.
+			\end{equation*}
+		\end{block}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+	\includegraphics[width=\textwidth]{PCA_fig}
+	\end{minipage}
 	A solution is the $k$-principal eigenvectors of the empirical autocorrelation matrix
 	\begin{equation*}
 		\hat{R} = \frac{1}{N}\sum_{i=1}^N x_ix_i^T =: \frac{1}{N}\sum_{i=1}^N \Phi(x_i).
