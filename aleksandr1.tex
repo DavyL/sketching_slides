@@ -2,14 +2,14 @@
 		\frametitle{Motivation and principles of compressive learning}
 		
 		\begin{block}{What is the setup?}
-			We are confronted with a dataset which comes in form of $\boldsymbol{n}$ d-dimensional vectors {$\{\boldsymbol{x}_{i}\}_{i = 1}^{n}$}. We would like to perform some kind of learning on it but we are scared of the complexity when $\boldsymbol{n}$ is huge.
+			We are confronted with a dataset which comes in form of $n$ d-dimensional vectors {$\{x_{i}\}_{i = 1}^{n}$}. We would like to perform some kind of learning on it but we are scared of the complexity when $n$ is huge.
 			
 		\end{block}
 		
 		\begin{block}{What is compressive learning?}
 			The principle of compressive learning consists of compressing (sketching) the dataset before applying any learning techniques. The sketch consists of a single vector $\tilde{z}$ which is constructed by transforming each vector of the dataset and averaging the results :
 			$$
-			\tilde{z} = \frac{1}{n}\sum_{i = 1}^{n} \boldsymbol{\Phi(x_{i})}
+			\tilde{z} = \frac{1}{n}\sum_{i = 1}^{n} \Phi(x_{i})
 			$$
 		\end{block}
 	\end{frame}
